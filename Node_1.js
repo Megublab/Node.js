@@ -1,17 +1,18 @@
-function add(num) {
-    let sum = num;
+function add(...numbers) {
+  let sum = 0;
   
-    function addNext(nextNum) {
-      sum += nextNum;
-      return addNext;
-    }
-  
-    addNext.toString = function () {
-      return sum;
-    };
-  
-    return addNext;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
   }
   
-  console.log(add(2)(5)(7)(1)(6)(5)(11));
+  return {
+    numbers: numbers,
+    sum: sum
+  };
+}
+
+
+const result = add(2, 4, 6, 8);
+console.log(result.numbers); 
+console.log(result.sum); 
   
